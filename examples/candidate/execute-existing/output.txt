@@ -1,0 +1,1 @@
+Synthetic candidate fixture: execute the existing invoice task without changing the skill.

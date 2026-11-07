@@ -1,0 +1,147 @@
+{
+  "suite_sha256": "bde89e215b384ba4566a8f52384871734ccae529b0e8dafe8504d990ec97d4db",
+  "baseline": {
+    "label": "baseline",
+    "counts": {
+      "pass": 3,
+      "fail": 3,
+      "not_run": 6,
+      "total": 12,
+      "checked": 6,
+      "pass_rate": 0.5,
+      "coverage": 0.5
+    }
+  },
+  "candidate": {
+    "label": "candidate",
+    "counts": {
+      "pass": 6,
+      "fail": 0,
+      "not_run": 6,
+      "total": 12,
+      "checked": 6,
+      "pass_rate": 1.0,
+      "coverage": 0.5
+    }
+  },
+  "paired": {
+    "checked": 6,
+    "baseline": {
+      "pass": 3,
+      "fail": 3,
+      "not_run": 0,
+      "total": 6,
+      "checked": 6,
+      "pass_rate": 0.5,
+      "coverage": 1.0
+    },
+    "candidate": {
+      "pass": 6,
+      "fail": 0,
+      "not_run": 0,
+      "total": 6,
+      "checked": 6,
+      "pass_rate": 1.0,
+      "coverage": 1.0
+    },
+    "pass_rate_delta": 0.5
+  },
+  "transitions": [
+    {
+      "case_id": "create-workflow",
+      "assertion_id": "lead",
+      "type": "required_string",
+      "baseline": "fail",
+      "candidate": "pass",
+      "paired_checked": true
+    },
+    {
+      "case_id": "create-workflow",
+      "assertion_id": "saved-text",
+      "type": "required_file",
+      "baseline": "pass",
+      "candidate": "pass",
+      "paired_checked": true
+    },
+    {
+      "case_id": "create-workflow",
+      "assertion_id": "no-secret",
+      "type": "forbidden_file",
+      "baseline": "pass",
+      "candidate": "pass",
+      "paired_checked": true
+    },
+    {
+      "case_id": "create-workflow",
+      "assertion_id": "actual-routing",
+      "type": "trigger",
+      "baseline": "not_run",
+      "candidate": "not_run",
+      "paired_checked": false
+    },
+    {
+      "case_id": "create-workflow",
+      "assertion_id": "actual-execution",
+      "type": "execution",
+      "baseline": "not_run",
+      "candidate": "not_run",
+      "paired_checked": false
+    },
+    {
+      "case_id": "create-workflow",
+      "assertion_id": "visual-review",
+      "type": "human_visual",
+      "baseline": "not_run",
+      "candidate": "not_run",
+      "paired_checked": false
+    },
+    {
+      "case_id": "compare-revisions",
+      "assertion_id": "unresolved",
+      "type": "required_string",
+      "baseline": "fail",
+      "candidate": "pass",
+      "paired_checked": true
+    },
+    {
+      "case_id": "compare-revisions",
+      "assertion_id": "no-unsupported-claim",
+      "type": "forbidden_string",
+      "baseline": "fail",
+      "candidate": "pass",
+      "paired_checked": true
+    },
+    {
+      "case_id": "compare-revisions",
+      "assertion_id": "actual-routing",
+      "type": "trigger",
+      "baseline": "not_run",
+      "candidate": "not_run",
+      "paired_checked": false
+    },
+    {
+      "case_id": "compare-revisions",
+      "assertion_id": "prompt-is-not-run",
+      "type": "prompt_only",
+      "baseline": "not_run",
+      "candidate": "not_run",
+      "paired_checked": false
+    },
+    {
+      "case_id": "execute-existing",
+      "assertion_id": "no-installation",
+      "type": "forbidden_string",
+      "baseline": "pass",
+      "candidate": "pass",
+      "paired_checked": true
+    },
+    {
+      "case_id": "execute-existing",
+      "assertion_id": "actual-routing",
+      "type": "trigger",
+      "baseline": "not_run",
+      "candidate": "not_run",
+      "paired_checked": false
+    }
+  ]
+}

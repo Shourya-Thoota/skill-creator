@@ -1,0 +1,147 @@
+{
+  "result_version": 1,
+  "suite_sha256": "bde89e215b384ba4566a8f52384871734ccae529b0e8dafe8504d990ec97d4db",
+  "label": "candidate",
+  "outputs_root": "/home/user/workspace/skill-candidates/all-links-20261025/skill-creator/examples/candidate",
+  "status": "not_run",
+  "counts": {
+    "pass": 6,
+    "fail": 0,
+    "not_run": 6,
+    "total": 12,
+    "checked": 6,
+    "pass_rate": 1.0,
+    "coverage": 0.5
+  },
+  "cases": [
+    {
+      "id": "create-workflow",
+      "status": "not_run",
+      "counts": {
+        "pass": 3,
+        "fail": 0,
+        "not_run": 3,
+        "total": 6,
+        "checked": 3,
+        "pass_rate": 1.0,
+        "coverage": 0.5
+      },
+      "assertions": [
+        {
+          "id": "lead",
+          "type": "required_string",
+          "status": "pass",
+          "evidence": "Literal substring present",
+          "evidence_kind": "deterministic"
+        },
+        {
+          "id": "saved-text",
+          "type": "required_file",
+          "status": "pass",
+          "evidence": "Regular file exists",
+          "evidence_kind": "deterministic"
+        },
+        {
+          "id": "no-secret",
+          "type": "forbidden_file",
+          "status": "pass",
+          "evidence": "Forbidden path absent",
+          "evidence_kind": "deterministic"
+        },
+        {
+          "id": "actual-routing",
+          "type": "trigger",
+          "status": "not_run",
+          "evidence": "No attributed manual evidence supplied",
+          "evidence_kind": "missing"
+        },
+        {
+          "id": "actual-execution",
+          "type": "execution",
+          "status": "not_run",
+          "evidence": "No attributed manual evidence supplied",
+          "evidence_kind": "missing"
+        },
+        {
+          "id": "visual-review",
+          "type": "human_visual",
+          "status": "not_run",
+          "evidence": "No attributed manual evidence supplied",
+          "evidence_kind": "missing"
+        }
+      ]
+    },
+    {
+      "id": "compare-revisions",
+      "status": "not_run",
+      "counts": {
+        "pass": 2,
+        "fail": 0,
+        "not_run": 2,
+        "total": 4,
+        "checked": 2,
+        "pass_rate": 1.0,
+        "coverage": 0.5
+      },
+      "assertions": [
+        {
+          "id": "unresolved",
+          "type": "required_string",
+          "status": "pass",
+          "evidence": "Literal substring present",
+          "evidence_kind": "deterministic"
+        },
+        {
+          "id": "no-unsupported-claim",
+          "type": "forbidden_string",
+          "status": "pass",
+          "evidence": "Literal substring absent",
+          "evidence_kind": "deterministic"
+        },
+        {
+          "id": "actual-routing",
+          "type": "trigger",
+          "status": "not_run",
+          "evidence": "No attributed manual evidence supplied",
+          "evidence_kind": "missing"
+        },
+        {
+          "id": "prompt-is-not-run",
+          "type": "prompt_only",
+          "status": "not_run",
+          "evidence": "No attributed manual evidence supplied",
+          "evidence_kind": "missing"
+        }
+      ]
+    },
+    {
+      "id": "execute-existing",
+      "status": "not_run",
+      "counts": {
+        "pass": 1,
+        "fail": 0,
+        "not_run": 1,
+        "total": 2,
+        "checked": 1,
+        "pass_rate": 1.0,
+        "coverage": 0.5
+      },
+      "assertions": [
+        {
+          "id": "no-installation",
+          "type": "forbidden_string",
+          "status": "pass",
+          "evidence": "Literal substring absent",
+          "evidence_kind": "deterministic"
+        },
+        {
+          "id": "actual-routing",
+          "type": "trigger",
+          "status": "not_run",
+          "evidence": "No attributed manual evidence supplied",
+          "evidence_kind": "missing"
+        }
+      ]
+    }
+  ]
+}

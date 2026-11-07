@@ -1,0 +1,1 @@
+Synthetic candidate fixture: use create-skill as the authoring and save lead.

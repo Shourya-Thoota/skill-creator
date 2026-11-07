@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "create-workflow",
+      "prompt": "Turn the weekly invoice reconciliation workflow we just used into a reusable skill, with checks for its saved outputs.",
+      "should_trigger": true,
+      "assertions": [
+        {"id": "lead", "type": "required_string", "file": "output.txt", "value": "create-skill"},
+        {"id": "saved-text", "type": "required_file", "file": "output.txt"},
+        {"id": "no-secret", "type": "forbidden_file", "file": "credentials.txt"},
+        {"id": "actual-routing", "type": "trigger"},
+        {"id": "actual-execution", "type": "execution"},
+        {"id": "visual-review", "type": "human_visual"}
+      ]
+    },
+    {
+      "id": "compare-revisions",
+      "prompt": "Can you compare my original skill and the revision on the same saved examples and tell me which checks still need evidence?",
+      "should_trigger": true,
+      "assertions": [
+        {"id": "unresolved", "type": "required_string", "file": "output.txt", "value": "not_run", "case_sensitive": false},
+        {"id": "no-unsupported-claim", "type": "forbidden_string", "file": "output.txt", "value": "proves better model quality"},
+        {"id": "actual-routing", "type": "trigger"},
+        {"id": "prompt-is-not-run", "type": "prompt_only"}
+      ]
+    },
+    {
+      "id": "execute-existing",
+      "prompt": "Use my existing invoice skill to reconcile this month's invoices; don't edit or benchmark the skill.",
+      "should_trigger": false,
+      "assertions": [
+        {"id": "no-installation", "type": "forbidden_string", "file": "output.txt", "value": "install a new skill"},
+        {"id": "actual-routing", "type": "trigger"}
+      ]
+    }
+  ]
+}

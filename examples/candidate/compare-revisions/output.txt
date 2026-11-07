@@ -1,0 +1,1 @@
+Synthetic candidate fixture: absent execution evidence is not_run; compare saved checks only.

@@ -1,0 +1,28 @@
+{
+  "suite_sha256": "bde89e215b384ba4566a8f52384871734ccae529b0e8dafe8504d990ec97d4db",
+  "label": "candidate",
+  "run_count": 1,
+  "runs": [
+    {
+      "pass": 6,
+      "fail": 0,
+      "not_run": 6,
+      "total": 12,
+      "checked": 6,
+      "pass_rate": 1.0,
+      "coverage": 0.5
+    }
+  ],
+  "pooled_counts": {
+    "pass": 6,
+    "fail": 0,
+    "not_run": 6,
+    "total": 12,
+    "checked": 6,
+    "pass_rate": 1.0,
+    "coverage": 0.5
+  },
+  "observed_rate_count": 1,
+  "mean_pass_rate": 1.0,
+  "sample_stddev_pass_rate": null
+}

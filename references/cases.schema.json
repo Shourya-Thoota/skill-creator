@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill Creator saved-output test cases",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "cases"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/case"}
+    }
+  },
+  "$comment": "The runtime validator additionally enforces unique case IDs and assertion IDs within each case.",
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"},
+    "text": {"type": "string", "pattern": "\\S"},
+    "path": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*[\\\\:\\u0000-\\u001f])(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$))(?!.*//)(?!.*\\/$)\\S(?:.*\\S)?$"
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "prompt", "assertions"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "prompt": {"$ref": "#/$defs/text"},
+        "should_trigger": {"type": "boolean"},
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/assertion"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "assertions": {
+                "contains": {
+                  "type": "object",
+                  "required": ["type"],
+                  "properties": {"type": {"const": "trigger"}}
+                }
+              }
+            }
+          },
+          "then": {"required": ["should_trigger"]}
+        }
+      ]
+    },
+    "assertion": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "type", "file", "value"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "type": {"enum": ["required_string", "forbidden_string"]},
+            "description": {"$ref": "#/$defs/text"},
+            "file": {"$ref": "#/$defs/path"},
+            "value": {"$ref": "#/$defs/text"},
+            "case_sensitive": {"type": "boolean"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "type", "file"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "type": {"enum": ["required_file", "forbidden_file"]},
+            "description": {"$ref": "#/$defs/text"},
+            "file": {"$ref": "#/$defs/path"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "type"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"},
+            "type": {"enum": ["execution", "prompt_only", "human_visual", "trigger"]},
+            "description": {"$ref": "#/$defs/text"}
+          }
+        }
+      ]
+    }
+  }
+}
